@@ -1,0 +1,46 @@
+﻿@model IEnumerable<CakeCompanyPortal.Transport>
+
+@{
+    ViewBag.Title = "Transport Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Transport Details</h2>
+
+<p>
+    @*@Html.ActionLink("Create New", "Create")*@
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TransportID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TransportType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QuantityAllowed)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.TransportID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TransportType)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.QuantityAllowed)
+    </td>
+    <td style="display:none;">
+        @Html.ActionLink("Edit", "Edit", new { id = item.TransportID }) |
+        @Html.ActionLink("Details", "Details", new { id = item.TransportID }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.TransportID })
+    </td>
+</tr>
+}
+
+</table>
