@@ -1,0 +1,70 @@
+﻿@model IEnumerable<CakeCompanyPortal.Order>
+
+@{
+    ViewBag.Title = "Order Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Order Details</h2>
+
+<p>
+    @*@Html.ActionLink("Create New", "Create")*@
+</p>
+<table class="table">
+    <tr>
+        <th width="300px">
+            @Html.DisplayNameFor(model => model.OrderNumber)
+        </th>
+        <th >
+            @Html.DisplayNameFor(model => model.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductQuantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EstimatedDeliveryTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RequestedDeliveryTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderStatus)
+        </th>
+        <th style="display:none">
+            @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.OrderNumber)
+    </td>
+    <td >
+        @Html.DisplayFor(modelItem => item.ProductName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ProductQuantity)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.EstimatedDeliveryTime)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.RequestedDeliveryTime)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.OrderStatus)
+    </td>
+    <td style="display:none">
+        @Html.DisplayFor(modelItem => item.CreatedDate)
+    </td>
+    <td style="display:none">
+        @Html.ActionLink("Edit", "Edit", new { id = item.OrderID }) |
+        @Html.ActionLink("Details", "Details", new { id = item.OrderID }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.OrderID })
+    </td>
+</tr>
+}
+
+</table>

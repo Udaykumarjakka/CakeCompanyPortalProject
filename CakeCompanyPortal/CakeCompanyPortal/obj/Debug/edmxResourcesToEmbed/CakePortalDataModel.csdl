@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CakeComapnyDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="CakeComapnyDBEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Clients" EntityType="CakeComapnyDBModel.Client" />
+    <EntitySet Name="Invoices" EntityType="CakeComapnyDBModel.Invoice" />
+    <EntitySet Name="Orders" EntityType="CakeComapnyDBModel.Order" />
+    <EntitySet Name="Products" EntityType="CakeComapnyDBModel.Product" />
+    <EntitySet Name="Transports" EntityType="CakeComapnyDBModel.Transport" />
+  </EntityContainer>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="ClientId" />
+    </Key>
+    <Property Name="ClientId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HasCreditLimit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsSuccessful" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Invoice">
+    <Key>
+      <PropertyRef Name="InvoiceID" />
+    </Key>
+    <Property Name="InvoiceID" Type="Int32" Nullable="false" />
+    <Property Name="OrderNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ClientID" Type="Int32" />
+    <Property Name="TransportID" Type="Int32" />
+    <Property Name="BillAmount" Type="Int32" />
+    <Property Name="BillStatus" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="Int32" Nullable="false" />
+    <Property Name="OrderNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProductID" Type="Int32" />
+    <Property Name="ClientId" Type="Int32" />
+    <Property Name="ProductQuantity" Type="Int32" />
+    <Property Name="EstimatedDeliveryTime" Type="DateTime" Precision="3" />
+    <Property Name="RequestedDeliveryTime" Type="DateTime" Precision="3" />
+    <Property Name="OrderStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProductFlavour" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProductType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="ProductDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="PreparationTime" Type="Int32" />
+    <Property Name="ProductPrice" Type="Int32" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Transport">
+    <Key>
+      <PropertyRef Name="TransportID" />
+    </Key>
+    <Property Name="TransportID" Type="Int32" Nullable="false" />
+    <Property Name="TransportType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="QuantityAllowed" Type="Int32" />
+  </EntityType>
+</Schema>

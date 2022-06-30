@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CakeComapnyDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view '4EEDFF8913022DA54591961342230AA0_MENTS\DOCUMENTATION\GENERAL VISA\CAKECOMPANYPORTAL\CAKECOMPANYPORTAL\APP_DATA\CAKECOMAPNYDB.MDF.dbo.Clients' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Clients">
+    <Key>
+      <PropertyRef Name="ClientId" />
+    </Key>
+    <Property Name="ClientId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address" Type="nvarchar" MaxLength="500" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="HasCreditLimit" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsSuccessful" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view '4EEDFF8913022DA54591961342230AA0_MENTS\DOCUMENTATION\GENERAL VISA\CAKECOMPANYPORTAL\CAKECOMPANYPORTAL\APP_DATA\CAKECOMAPNYDB.MDF.dbo.Invoices' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Invoices">
+    <Key>
+      <PropertyRef Name="InvoiceID" />
+    </Key>
+    <Property Name="InvoiceID" Type="int" Nullable="false" />
+    <Property Name="OrderNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="ClientID" Type="int" />
+    <Property Name="TransportID" Type="int" />
+    <Property Name="BillAmount" Type="int" />
+    <Property Name="BillStatus" Type="nvarchar" MaxLength="10" />
+    <Property Name="CreatedDate" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view '4EEDFF8913022DA54591961342230AA0_MENTS\DOCUMENTATION\GENERAL VISA\CAKECOMPANYPORTAL\CAKECOMPANYPORTAL\APP_DATA\CAKECOMAPNYDB.MDF.dbo.Orders' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Orders">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="int" Nullable="false" />
+    <Property Name="OrderNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="ProductID" Type="int" />
+    <Property Name="ClientId" Type="int" />
+    <Property Name="ProductQuantity" Type="int" />
+    <Property Name="EstimatedDeliveryTime" Type="datetime" />
+    <Property Name="RequestedDeliveryTime" Type="datetime" />
+    <Property Name="OrderStatus" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view '4EEDFF8913022DA54591961342230AA0_MENTS\DOCUMENTATION\GENERAL VISA\CAKECOMPANYPORTAL\CAKECOMPANYPORTAL\APP_DATA\CAKECOMAPNYDB.MDF.dbo.Products' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="int" Nullable="false" />
+    <Property Name="ProductName" Type="nvarchar" MaxLength="50" />
+    <Property Name="ProductFlavour" Type="nvarchar" MaxLength="50" />
+    <Property Name="ProductType" Type="nvarchar" MaxLength="20" />
+    <Property Name="ProductDescription" Type="nvarchar" MaxLength="500" />
+    <Property Name="PreparationTime" Type="int" />
+    <Property Name="ProductPrice" Type="int" />
+    <Property Name="CreatedDate" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view '4EEDFF8913022DA54591961342230AA0_MENTS\DOCUMENTATION\GENERAL VISA\CAKECOMPANYPORTAL\CAKECOMPANYPORTAL\APP_DATA\CAKECOMAPNYDB.MDF.dbo.Transports' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Transports">
+    <Key>
+      <PropertyRef Name="TransportID" />
+    </Key>
+    <Property Name="TransportID" Type="int" Nullable="false" />
+    <Property Name="TransportType" Type="nvarchar" MaxLength="50" />
+    <Property Name="QuantityAllowed" Type="int" />
+  </EntityType>
+  <EntityContainer Name="CakeComapnyDBModelStoreContainer">
+    <EntitySet Name="Clients" EntityType="Self.Clients" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Clients].[ClientId] AS [ClientId], 
+    [Clients].[FirstName] AS [FirstName], 
+    [Clients].[LastName] AS [LastName], 
+    [Clients].[Address] AS [Address], 
+    [Clients].[Phone] AS [Phone], 
+    [Clients].[Email] AS [Email], 
+    [Clients].[HasCreditLimit] AS [HasCreditLimit], 
+    [Clients].[IsSuccessful] AS [IsSuccessful], 
+    [Clients].[CreatedDate] AS [CreatedDate]
+    FROM [dbo].[Clients] AS [Clients]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Invoices" EntityType="Self.Invoices" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Invoices].[InvoiceID] AS [InvoiceID], 
+    [Invoices].[OrderNumber] AS [OrderNumber], 
+    [Invoices].[ClientID] AS [ClientID], 
+    [Invoices].[TransportID] AS [TransportID], 
+    [Invoices].[BillAmount] AS [BillAmount], 
+    [Invoices].[BillStatus] AS [BillStatus], 
+    [Invoices].[CreatedDate] AS [CreatedDate]
+    FROM [dbo].[Invoices] AS [Invoices]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Orders" EntityType="Self.Orders" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Orders].[OrderID] AS [OrderID], 
+    [Orders].[OrderNumber] AS [OrderNumber], 
+    [Orders].[ProductID] AS [ProductID], 
+    [Orders].[ClientId] AS [ClientId], 
+    [Orders].[ProductQuantity] AS [ProductQuantity], 
+    [Orders].[EstimatedDeliveryTime] AS [EstimatedDeliveryTime], 
+    [Orders].[RequestedDeliveryTime] AS [RequestedDeliveryTime], 
+    [Orders].[OrderStatus] AS [OrderStatus], 
+    [Orders].[CreatedDate] AS [CreatedDate]
+    FROM [dbo].[Orders] AS [Orders]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Products" EntityType="Self.Products" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Products].[ProductID] AS [ProductID], 
+    [Products].[ProductName] AS [ProductName], 
+    [Products].[ProductFlavour] AS [ProductFlavour], 
+    [Products].[ProductType] AS [ProductType], 
+    [Products].[ProductDescription] AS [ProductDescription], 
+    [Products].[PreparationTime] AS [PreparationTime], 
+    [Products].[ProductPrice] AS [ProductPrice], 
+    [Products].[CreatedDate] AS [CreatedDate]
+    FROM [dbo].[Products] AS [Products]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Transports" EntityType="Self.Transports" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Transports].[TransportID] AS [TransportID], 
+    [Transports].[TransportType] AS [TransportType], 
+    [Transports].[QuantityAllowed] AS [QuantityAllowed]
+    FROM [dbo].[Transports] AS [Transports]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
